@@ -1,0 +1,18 @@
+.nav-pagination {
+  margin-top: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  border-radius: 2px;
+  flex-direction: row;
+  list-style-type: none;
+  border: 1px solid gray;
+  justify-content: space-around;
+}
+
+.pagination-options {
+  color: white;
+  cursor: pointer;
+  border-left: 1px solid white;
+}

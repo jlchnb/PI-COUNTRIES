@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+}
+
+
+.container{
+    background-image: url(./flagcountries.jpg);
+    height: 100vh;
+    background-size: 215vh;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.country-card {
+    margin-top: 15px;
+}

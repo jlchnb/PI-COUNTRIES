@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+}
+
+
+.container{
+    background-image: url(./What-are-the-Oldest-Countries-in-the-World.png);
+    height: 100vh;
+    background-size: 215vh;
+    
+}
+
+.h1{
+
+    font-size: 30px;
+    font-family: 'Rubik', sans-serif;
+    align-items: center;
+    padding: 15vh;
+    color: #dbc29f;
+    text-shadow: 2px 2px black;
+    font-weight: bolder;
+
+}
+
+.boton {
+    width: 140px;
+    height: 45px;
+    font-size: 23px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+   }
+
+.boton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #70c564;
+    z-index: -1;
+    transition: all 0.5s;
+   }
+   
+.boton:hover::before {
+    width: 100%;
+    border-radius: 5%;
+   }
+   
+.boton:hover {
+    color: #000000;
+    border-radius: 5%;
+
+   }
+   
+.boton:active:before {
+    background: #b9b9b9;
+    border-radius: 5%;
+   }
