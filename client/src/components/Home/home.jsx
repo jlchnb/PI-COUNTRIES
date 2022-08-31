@@ -14,11 +14,12 @@ export default function home() {
 
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
-    const [currentPage, setCurrentPage] = useState(1)
-    const [countriesPerPage, setCountriesPerPage] = useState(9)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [countriesPerPage, setCountriesPerPage] = useState(10);
     const indexOfLastCountry = currentPage * countriesPerPage
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
-    const [currentCountries, setCurrentCountries] = useState(allCountries);
+    const currentCountries = allCountries.slice(indexOfFirstCountry,indexOfLastCountry);
+    
 
 
     const pagination = (pageNumber) => {
@@ -27,7 +28,9 @@ export default function home() {
 
     useEffect(() => {
         dispatch(getAllCountries());
+        console.log(getAllCountries);
     }, [])
+
 
     useEffect(() => {
         if(currentPage === 1)
@@ -41,22 +44,24 @@ export default function home() {
         dispatch(getAllCountries());
     }
 
-    function handleFilterStatus(continentName) {
-        if( continentName !== 'All Continents' )
-            setCurrentCountries(allCountries.filter(country => country.continents === continentName));
-        else
-            setCurrentCountries(allCountries)
-    }
+    // function handleFilterStatus(continentName) {
+    //     if( continentName !== 'All Continents' )
+    //         setCurrentCountries(allCountries.filter(country => country.continents === continentName));
+    //     else
+    //         setCurrentCountries(allCountries)
+    // }
     
     return (
         <div className={h.container}>
             <div>
+                <h1>{indexOfLastCountry}</h1>
+                <h1>{allCountries.length}</h1>
                 <h1>Home</h1>
                 <button onClick={e => {handleClick(e)}}>
                     Refresh Page
                 </button>
                 <div>
-                    <select onChange={e => handleFilterStatus(e.target.value)}>
+                    <select>
                         <option value="All Continents">All Contients</option>
                         <option value="Europe">Europe</option>
                         <option value="Asia">Asia</option>
@@ -68,12 +73,13 @@ export default function home() {
                     </select>
                 </div>
                 <Searchbar/>
-                <Link to='/countries'><button className={h.botonCrearAct}>Agregar Actividad</button></Link>
+                <Link to='/actividades'><button className={h.botonCrearAct}>Agregar Actividad</button></Link>
                 <div className={h['cards-container']}>
                     {
-                        currentCountries.slice(indexOfFirstCountry, indexOfLastCountry).map(country => {
+                        currentCountries.map(country => {
                             return (
                                 <Card
+                                    id={country.id}
                                     key={country.name}
                                     name={country.name}
                                     image={country.image}
@@ -88,7 +94,7 @@ export default function home() {
                 <Pagination
                     pagination={pagination}
                     countriesPerPage={countriesPerPage}
-                    allCountries={currentCountries.length}
+                    allCountries={allCountries.length}
                 />
             </div>
         </div>

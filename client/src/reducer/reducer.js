@@ -6,8 +6,7 @@ import{
 
 const initialState = {
     countries: [],
-    countriesCopy: [],
-    searchCountry: [],
+    countriesCopy: []
 }
 
 export default function rootReducer(state = initialState, action){

@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, Link, Switch } from 'react-router-dom';
 import Home from './components/Home/home.jsx';
 import LandingPage from './components/LandingPage/landing';
+import CardFull from './components/CardFull/CardFull';
 
 function App() {
   return (
@@ -11,13 +12,16 @@ function App() {
         <h1>Countries</h1>
       <Switch>
         <Route path='/actividades'>
-          <LandingPage />
+          {/* <TouristActivity/> */}
+        </Route>
+        <Route path='/countries/:id'>
+          <CardFull/>
         </Route>
         <Route path='/home'>
           <Home />
         </Route> 
         <Route path='/'>
-          <LandingPage />
+          <LandingPage/>
         </Route>
       </Switch>
       </div>

@@ -37,3 +37,9 @@ export function filterCountriesByContinent(payload){
         payload
     }
 }
+
+export function requestParams() {
+    return{
+        
+    }
+}

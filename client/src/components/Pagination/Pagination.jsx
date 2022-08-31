@@ -14,8 +14,8 @@ export default function Pagination({ countriesPerPage, allCountries, pagination 
             <ul className={PaginationStyles['pagination-container']}>
                 {pageNumbers &&
                     pageNumbers.map(number => (
-                        <li className={PaginationStyles['pagination-options']} key={number} onClick={() => pagination(number)}>
-                            {number}
+                        <li className={PaginationStyles['pagination-options']} key={number}>
+                            <button onClick={() => pagination(number)}>{number}</button>
                         </li>
                     ))}
             </ul>
