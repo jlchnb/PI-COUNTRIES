@@ -2,6 +2,12 @@
     margin: 0;
 }
 
+.title{
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 2px 2px black;
+}
+
 
 .container{
     background-image: url(./flagcountries.jpg);

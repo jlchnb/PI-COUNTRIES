@@ -1,18 +1,18 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Route, Routes, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/home.jsx';
 import LandingPage from './components/LandingPage/landing';
 import CardFull from './components/CardFull/CardFull';
+import TouristActivity from './components/TouristActivity/TouristActivity'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>Countries</h1>
       <Switch>
-        <Route path='/actividades'>
-          {/* <TouristActivity/> */}
+        <Route path='/activities'>
+          <TouristActivity/>
         </Route>
         <Route path='/countries/:id'>
           <CardFull/>

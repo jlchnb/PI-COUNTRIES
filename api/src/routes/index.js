@@ -84,18 +84,31 @@ router.get('/countries', async (req,res) =>{
 
 // POST /activities
 
-router.post('/activity', async(req,res) =>{
+router.post('/countries', async(req,res,next) =>{
+    console.log(req.body)
     try{
-        const {name,difficulty} = req.body
-        if(name && difficulty){
-            const actividad = await Activity.create(req.body)
-            res.status(200).send(actividad)
-        }else{
-            res.status(404).send('Faltan datos')
-        }
+        const {name,difficulty,duration,season,countries} = req.body
+            const actividad = Activity.create({name,difficulty,duration,season})
+            
+
+            const ActivityWithCountry = await Activity.findOne({
+                where:{
+                    name: name
+                },
+                attributes: {
+                    exclude: ['updatedAt', 'createdAt'],
+                },
+                include:{
+                    model:Country,
+                    through:{
+                        attributes:[]
+                    }
+                }
+            })
+            res.json(ActivityWithCountry)
     } catch (err){
-        console.log(err)
+        next(err)
     }
-})
+});
 
 module.exports = router;

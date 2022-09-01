@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import h from './h.module.css';
-import LandingPage from '../LandingPage/landing';
 import { Link } from 'react-router-dom'
-import { getAllCountries, filterCountriesByContinent } from '../../actions/actions';
+import { getAllCountries, filterCountriesByContinent, alphabeticSort, populationSort } from '../../actions/actions';
 import Card from '../Card/Card';
 import Searchbar from '../Searchbar/searchbar';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,17 +18,19 @@ export default function home() {
     const indexOfLastCountry = currentPage * countriesPerPage
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries.slice(indexOfFirstCountry,indexOfLastCountry);
+    const [order, setOrder] = useState("")
     
-
+    console.log(allCountries,"paises")
 
     const pagination = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
     useEffect(() => {
-        dispatch(getAllCountries());
-        console.log(getAllCountries);
-    }, [])
+        dispatch(getAllCountries())
+        dispatch(filterCountriesByContinent())
+        // console.log(getAllCountries);
+    }, [dispatch])
 
 
     useEffect(() => {
@@ -44,24 +45,49 @@ export default function home() {
         dispatch(getAllCountries());
     }
 
-    // function handleFilterStatus(continentName) {
-    //     if( continentName !== 'All Continents' )
-    //         setCurrentCountries(allCountries.filter(country => country.continents === continentName));
-    //     else
-    //         setCurrentCountries(allCountries)
-    // }
+    // (allCountries.filter(country => country.continents === continentName))
+
+    function handleContientFilter(e){
+        e.preventDefault();
+        dispatch(filterCountriesByContinent(e.target.value))
+        setOrder(e.target.value)
+        console.log(allCountries)
+    }
     
+    function handleAToZ(e){
+        e.preventDefault()
+        dispatch(alphabeticSort(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Order Sort ${e.target.value}`)
+    }
+
+    function handlePopulationSort(e){
+        e.preventDefault()
+        dispatch(populationSort(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Order Sort ${e.target.value}`)
+    }
+    
+
     return (
         <div className={h.container}>
             <div>
-                <h1>{indexOfLastCountry}</h1>
-                <h1>{allCountries.length}</h1>
-                <h1>Home</h1>
+                <h1 className={h.title}>Home</h1>
                 <button onClick={e => {handleClick(e)}}>
                     Refresh Page
                 </button>
                 <div>
-                    <select>
+                    <select onChange={e => {handleAToZ(e)}} className={h.botonCrearRec}> 
+                        <option value="" hidden>Alphabetic Sort</option>
+                        <option value="asc">A-Z</option>
+                        <option value="desc">Z-A</option>
+                    </select>
+                    <select onChange={e =>{handlePopulationSort(e)}}>
+                        <option value="" hidden>Sort by country population</option>
+                        <option value="up">Upper</option>
+                        <option value="down">Lower</option>
+                    </select>
+                    <select onChange={e =>{handleContientFilter(e)}}>
                         <option value="All Continents">All Contients</option>
                         <option value="Europe">Europe</option>
                         <option value="Asia">Asia</option>
@@ -73,7 +99,9 @@ export default function home() {
                     </select>
                 </div>
                 <Searchbar/>
-                <Link to='/actividades'><button className={h.botonCrearAct}>Agregar Actividad</button></Link>
+                <div>
+                    <Link to='/activities'><button className={h.botonCrearAct}>Go to Tourist Activity Page</button></Link>
+                </div>
                 <div className={h['cards-container']}>
                     {
                         currentCountries.map(country => {
@@ -93,7 +121,7 @@ export default function home() {
                 </div>
                 <Pagination
                     pagination={pagination}
-                    countriesPerPage={countriesPerPage}
+                    countriesPerPage={10}
                     allCountries={allCountries.length}
                 />
             </div>

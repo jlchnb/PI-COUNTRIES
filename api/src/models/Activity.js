@@ -29,8 +29,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
     creadiEnDb:{
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
+       type: DataTypes.BOOLEAN,
+       defaultValue: true
     }
   },{timestamps: false});
 };

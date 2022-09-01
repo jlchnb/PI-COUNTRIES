@@ -1,0 +1,48 @@
+.container{
+    background-image: url(./flying-plane-blue-sky-banner-background-tropical-leaves-toy-hand-flies-to-travel-summer-vacation-relaxation-tours-222613249.jpg);
+    height: 100vh;
+    background-size: 215vh;
+}
+
+.h1{
+    font-size: 40px;
+    text-shadow: 2px 2px #096e00;
+    
+}
+
+.boton {
+    position: relative;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 3px;
+    padding: 1em 2.5em;
+    display: inline-block;
+    border-radius: 6em;
+    transition: all .2s;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+    color: #EDEDE9;
+    background-color: #D5BDAF;
+}
+
+
+.back {
+    bottom: 10px;
+    position: absolute;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 10px;
+    padding: 1em 2.5em;
+    border-radius: 1em;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #0e6a7a;
+    justify-content: center;  
+    align-items: center;  
+}
+   
+
