@@ -46,7 +46,6 @@ export default function ActivityCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
-        console.log(input)
     }
 
     function handleSubmit(e){
@@ -54,7 +53,6 @@ export default function ActivityCreate(){
         if(!input.name || !input.duration){
             return alert('Please fill in all the fields')
           }
-          console.log('sadasd',input.countries)
         input.countries.forEach(item => dispatch(postActivity(input,allCountries[item].id)))
 
         // dispatch(postActivity(input))
@@ -74,7 +72,6 @@ export default function ActivityCreate(){
             ...input,
             countries: [...input.countries,e.target.value]
         })
-        console.log(e.target.value,'soy el value jeje')
     }
 
     function handleDelete(e,country){
@@ -109,7 +106,6 @@ export default function ActivityCreate(){
             season: e.target.value
         })
     }
-    console.log(input.difficulty === -1 && input.season === -1, 'soy la respuesta')
     return(
         <div className={ta.container}>
             <div>

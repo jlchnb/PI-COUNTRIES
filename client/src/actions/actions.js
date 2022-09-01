@@ -49,7 +49,7 @@ export function filterCountriesByContinent(payload){
 
 export function postActivity(payload,id){
     return async function(dispatch){
-        const posted = await axios.post(`http://localhost:3001/countries`, payload)
+        const posted = await axios.post(`http://localhost:3001/activities`, payload)
         return posted
     }
 }

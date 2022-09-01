@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Country, Activity, Op } = require('../db.js')
-const { getAllCountries, getCountries } = require('../controllers/ApiData')
+const { getAllCountries } = require('../controllers/ApiData')
 
 
 const router = Router();
@@ -38,29 +38,6 @@ router.get('/countries/:idPais', async (req,res) => {
     }
 })
 
-// router.get('countries/:idPais', async (req,res) => {
-//     const {idPais} = req.params
-    
-//     try {
-//         const country = await Country.findAll({
-//             where: {
-//                 id: idPais.toUpperCase()
-//             },
-//             include:[{
-//                 model: Activity,
-//                 attributes: ['name', 'difficulty', 'duration', 'season'],
-//                 through: {attributes:[]}
-//             }]
-//         })
-//         if(country.length){
-//             return res.status(200).json(country)
-//         }else{
-//             return res.status(400).send('Country not found')
-//         }
-//     } catch (err) {
-//         console.log(err)
-//     }
-// })
 
 // GET /countries?name="..."
 
@@ -84,10 +61,9 @@ router.get('/countries', async (req,res) =>{
 
 // POST /activities
 
-router.post('/countries', async(req,res,next) =>{
-    console.log(req.body)
+router.post('/activities', async(req,res,next) =>{
     try{
-        const {name,difficulty,duration,season,countries} = req.body
+        const {name,difficulty,duration,season} = req.body
             const actividad = Activity.create({name,difficulty,duration,season})
             
 
@@ -99,6 +75,7 @@ router.post('/countries', async(req,res,next) =>{
                     exclude: ['updatedAt', 'createdAt'],
                 },
                 include:{
+                    
                     model:Country,
                     through:{
                         attributes:[]
@@ -110,5 +87,6 @@ router.post('/countries', async(req,res,next) =>{
         next(err)
     }
 });
+
 
 module.exports = router;

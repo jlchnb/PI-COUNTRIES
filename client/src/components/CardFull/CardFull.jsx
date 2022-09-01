@@ -22,18 +22,17 @@ export default function CardFull({ className }) {
         <div>
             {detailedCountry.map(item => {
                 return (<div key={item.id} className={`${CardStyles['card-container']} ${className}`} >
-                    <div className={CardStyles['card-header']}>
-                        <h3 className={CardStyles['card-title']}>Nombre:{item.name || ""} id:{item.id}</h3>
+                    <div className={CardStyles['out']}>
                         <img className={CardStyles['card-img']} src={item.image} alt='imagen-pais' />
+                        <div className={CardStyles['in']}>
+                        <h3 className={CardStyles['title']}>Country:{item.name || ""} ({item.id})</h3><br></br>
+                        <label><strong>Capital:</strong> {item.capital}</label><br></br>
+                        <label><strong>Continent:</strong> {item.continents}</label><br></br>
+                        <label><strong>SubRegion:</strong> {item.subregion}</label><br></br>
+                        <label><strong>Area:</strong> {item.area}</label><br></br>
+                        <label><strong>Population:</strong> {item.population} people</label>
                     </div>
-
-                    <div className={CardStyles['card-details']}>
-                        <label><strong>Capital:</strong> {item.capital}</label>
-                        <label><strong>Continent:</strong> {item.continents}</label>
-                        <label><strong>SubRegion:</strong> {item.subregion}</label>
-                        <label><strong>Area:</strong> {item.area}</label>
-                        <label><strong>Population:</strong>{item.population}</label>
-                    </div>
+                </div>
                 </div>)
             })}
         </div>

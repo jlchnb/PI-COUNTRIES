@@ -28,7 +28,7 @@ export default function Searchbar(setCountries){
     return(
         <React.Fragment>
             <input type="text" placeholder="Enter a country" onChange={(e) => handleInputChange(e)} className={sb.input}/>
-            <button type="submit" onClick={(e) => handleSubmit(e)} className={sb.botonBuscarCoun}>Search</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className={sb.button}>Search</button>
         </React.Fragment>
     )
 }

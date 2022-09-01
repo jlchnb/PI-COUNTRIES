@@ -73,21 +73,24 @@ export default function home() {
         <div className={h.container}>
             <div>
                 <h1 className={h.title}>Home</h1>
-                <button onClick={e => {handleClick(e)}}>
-                    Refresh Page
+                <Searchbar/>
+                <br/>
+                <br/>
+                <button onClick={e => {handleClick(e)}} className={h.button}>
+                    Reset Filters
                 </button>
                 <div>
-                    <select onChange={e => {handleAToZ(e)}} className={h.botonCrearRec}> 
+                    <select onChange={e => {handleAToZ(e)}} className={h.filterselect}> 
                         <option value="" hidden>Alphabetic Sort</option>
                         <option value="asc">A-Z</option>
                         <option value="desc">Z-A</option>
                     </select>
-                    <select onChange={e =>{handlePopulationSort(e)}}>
+                    <select onChange={e =>{handlePopulationSort(e)}} className={h.filterselect}>
                         <option value="" hidden>Sort by country population</option>
                         <option value="up">Upper</option>
                         <option value="down">Lower</option>
                     </select>
-                    <select onChange={e =>{handleContientFilter(e)}}>
+                    <select onChange={e =>{handleContientFilter(e)}} className={h.filterselect}>
                         <option value="All Continents">All Contients</option>
                         <option value="Europe">Europe</option>
                         <option value="Asia">Asia</option>
@@ -98,9 +101,9 @@ export default function home() {
                         <option value="Antarctica">Antarctica</option>
                     </select>
                 </div>
-                <Searchbar/>
+                
                 <div>
-                    <Link to='/activities'><button className={h.botonCrearAct}>Go to Tourist Activity Page</button></Link>
+                    <Link to='/activities'><button className={h.button}>Go to Tourist Activity Page</button></Link>
                 </div>
                 <div className={h['cards-container']}>
                     {

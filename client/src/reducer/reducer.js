@@ -4,7 +4,6 @@ import{
     FILTER_BY_CONTINENT,
     ALPHABETICAL_SORT,
     POPULATION_SORT,
-    FILTRO_CREACION,
     GET_DETAIL
 } from '../actions/actions.js'
 
@@ -26,7 +25,7 @@ export default function rootReducer(state = initialState, action){
         case GET_DETAIL:
             return {
                 ...state,
-                countriesCopy: action.payload
+                countries: action.payload
             }
         case SEARCH_COUNTRY:
           return{
